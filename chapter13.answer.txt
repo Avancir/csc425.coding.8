@@ -1,0 +1,1239 @@
+Hoang Nguyen
+
+
+
+Question 1: 
+
+It is something like this. I only paste a screenfull of it (it is too long please don't deduct 
+point when I don't paste 103 pages of the manual):
+
+FREE(1)                                         User Commands                                        FREE(1)
+
+NAME
+       free - Display amount of free and used memory in the system
+
+SYNOPSIS
+       free [options]
+
+DESCRIPTION
+       free  displays  the  total amount of free and used physical and swap memory in the system, as well as
+       the buffers and caches used by the kernel. The information is gathered by parsing /proc/meminfo.  The
+       displayed columns are:
+
+       total  Total installed memory (MemTotal and SwapTotal in /proc/meminfo)
+
+       used   Used memory (calculated as total - free - buffers - cache)
+
+       free   Unused memory (MemFree and SwapFree in /proc/meminfo)
+
+       shared Memory used (mostly) by tmpfs (Shmem in /proc/meminfo)
+
+       buffers
+              Memory used by kernel buffers (Buffers in /proc/meminfo)
+
+       cache  Memory used by the page cache and slabs (Cached and SReclaimable in /proc/meminfo)
+
+       buff/cache
+              Sum of buffers and cache
+
+       available
+              Estimation  of  how  much memory is available for starting new applications, without swapping.
+ Manual page free(1) line 1 (press h for help or q to quit)
+
+
+
+Question 2:
+
+@Avancir ➜ /workspaces/csc425.coding.8 (main) $ free
+              total        used        free      shared  buff/cache   available
+Mem:           7938        1347         184          63        6407        6213
+Swap:             0           0           0
+I have about 8Gb of memory and I used 1.3Gb. This does match my intuition. 
+
+
+
+Question 3: Done
+
+
+
+Question 4: $ free
+              total        used        free      shared  buff/cache   available
+Mem:        8129244     1406152      224052       65756     6499040     6334628
+Swap:             0           0           0
+
+The memory used went up when I run the program. The number is small but noticable. 
+
+
+
+Question 5: 
+
+@Avancir ➜ /workspaces/csc425.coding.8 (main) $ pmap
+
+Usage:
+ pmap [options] PID [PID ...]
+
+Options:
+ -x, --extended              show details
+ -X                          show even more details
+            WARNING: format changes according to /proc/PID/smaps
+ -XX                         show everything the kernel provides
+ -c, --read-rc               read the default rc
+ -C, --read-rc-from=<file>   read the rc from file
+ -n, --create-rc             create new default rc
+ -N, --create-rc-to=<file>   create new rc to file
+            NOTE: pid arguments are not allowed with -n, -N
+ -d, --device                show the device format
+ -q, --quiet                 do not display header and footer
+ -p, --show-path             show path in the mapping
+ -A, --range=<low>[,<high>]  limit results to the given range
+
+ -h, --help     display this help and exit
+ -V, --version  output version information and exit
+
+For more details see pmap(1).
+
+
+
+Question 6:
+
+@Avancir ➜ /workspaces/csc425.coding.8 (main) $ ps auxw
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+codespa+       1  0.0  0.0   1136   640 ?        Ss   20:38   0:00 /sbin/docker-init -- /bin/sh -c echo Container started trap "exit 
+codespa+       7  0.0  0.0   7236  1792 ?        S    20:38   0:00 sleep infinity
+root         202  0.0  0.0  12196  3480 ?        Ss   20:38   0:00 sshd: /usr/sbin/sshd [listener] 0 of 10-100 startups
+root         997  0.0  0.9 1909264 75976 ?       Sl   20:39   0:00 dockerd --dns 168.63.129.16
+root        1005  0.0  0.5 1798848 45384 ?       Ssl  20:39   0:01 containerd --config /var/run/docker/containerd/containerd.toml
+codespa+    1810  0.0  0.0   2616  1408 ?        Ss   20:42   0:00 /bin/sh
+root        1839  0.0  0.0   2616  1408 ?        Ss   20:42   0:00 /bin/sh
+codespa+    2885  0.0  0.0   2624  1536 ?        Ss   20:42   0:00 sh /home/codespace/.vscode-remote/bin/38c31bc77e0dd6ae88a4e9cc9342
+codespa+    2894  0.2  1.4 1341576 113856 ?      Sl   20:42   0:06 /vscode/bin/linux-x64/38c31bc77e0dd6ae88a4e9cc93428cc27a56ba40/nod
+codespa+    2973  1.5  3.8 22499700 313964 ?     Sl   20:42   0:34 /vscode/bin/linux-x64/38c31bc77e0dd6ae88a4e9cc93428cc27a56ba40/nod
+codespa+    2987  0.0  0.6 1240924 51616 ?       Sl   20:42   0:00 /vscode/bin/linux-x64/38c31bc77e0dd6ae88a4e9cc93428cc27a56ba40/nod
+codespa+    3432  0.1  0.7 1119960 65024 ?       Rl   20:42   0:03 /vscode/bin/linux-x64/38c31bc77e0dd6ae88a4e9cc93428cc27a56ba40/nod
+codespa+    3891  0.0  0.6 993608 50624 ?        Sl   20:42   0:00 /vscode/bin/linux-x64/38c31bc77e0dd6ae88a4e9cc93428cc27a56ba40/nod
+codespa+    4364  0.0  0.0   2616  1408 ?        Ss   20:42   0:00 /bin/sh
+root        4415  0.0  0.0   2616  1408 ?        Ss   20:42   0:00 /bin/sh
+codespa+    4651  0.0  0.1  16812 11776 pts/2    Ss   20:43   0:00 /bin/bash --init-file /vscode/bin/linux-x64/38c31bc77e0dd6ae88a4e9
+codespa+   20123  0.0  0.0  10624  3328 pts/2    R+   21:21   0:00 ps auxw
+
+
+
+Question 7: 
+
+Example 1:
+@Avancir ➜ /workspaces/csc425.coding.8 (main) $ pmap -x 3432
+3432:   /vscode/bin/linux-x64/38c31bc77e0dd6ae88a4e9cc93428cc27a56ba40/node /vscode/bin/linux-x64/38c31bc77e0dd6ae88a4e9cc93428cc27a56ba40/out/bootstrap-fork --type=ptyHost --logsPath /home/codespace/.vscode-remote/data/logs/20240925T204246
+Address           Kbytes     RSS   Dirty Mode  Mapping
+0000000000400000    7640    6472       0 r---- node
+0000000000b76000   27304   20152       0 r-x-- node
+0000000002800000       4       0       0 r-x-- node
+0000000002801000   46816   10024       0 r---- node
+00000000055b9000      16      16       8 r---- node
+00000000055bd000     124     124      92 rw--- node
+00000000055dc000     180     168     168 rw---   [ anon ]
+000000000593e000    2724    2516    2516 rw---   [ anon ]
+0000002147d80000     256     108     108 rw---   [ anon ]
+000001af04fc0000     256     256     256 rw---   [ anon ]
+0000028e01dc0000     256       0       0 -----   [ anon ]
+000003b1b4700000     256     256     256 rw---   [ anon ]
+000003b761b00000     256     256     256 rw---   [ anon ]
+000003d0a0d80000     256     256     256 rw---   [ anon ]
+000004b5d3d80000     256     256     256 rw---   [ anon ]
+00000548aa5c0000     360     360     360 rw---   [ anon ]
+00000818b2700000     256     256     256 rw---   [ anon ]
+0000088dfc8c0000     256     256     256 rw---   [ anon ]
+000008a0237c0000     256     256     256 rw---   [ anon ]
+0000090399380000     452     452     452 rw---   [ anon ]
+00000b4c66f00000     256     256     256 rw---   [ anon ]
+00000bd082ec0000     204     204     204 rw---   [ anon ]
+00000c23b6bc0000     256     200     200 rw---   [ anon ]
+00000c8073340000     256     256     256 rw---   [ anon ]
+00000d758a980000     256     256     256 rw---   [ anon ]
+00000db145180000     256     256     256 rw---   [ anon ]
+00000df865300000     256      84      84 rw---   [ anon ]
+00000f024ab40000     256     256     256 rw---   [ anon ]
+00000f7a2edc0000     256     256     256 rw---   [ anon ]
+00000f9ca2080000     256     256     256 rw---   [ anon ]
+00000fa124f40000     256     256     256 rw---   [ anon ]
+00000fae8a180000     256     256     256 rw---   [ anon ]
+0000107530b00000     256     256     256 rw---   [ anon ]
+000012368ef40000     256     256     256 rw---   [ anon ]
+00001283689c0000     256     256     256 rw---   [ anon ]
+000012b4f10c0000     256     256     256 rw---   [ anon ]
+000012e4ba0c0000     256     256     256 rw---   [ anon ]
+0000137098640000     256     256     256 rw---   [ anon ]
+000013c27a8c0000     256       8       8 rw---   [ anon ]
+0000144e89700000     256     256     256 rw---   [ anon ]
+000015d586b00000     256     256     256 rw---   [ anon ]
+000016f261340000     256     248     248 rw---   [ anon ]
+000017023f000000     256     256     256 rw---   [ anon ]
+0000171059180000     256     256     256 rw---   [ anon ]
+0000191a27f80000     256     256     256 rw---   [ anon ]
+000019eb93f00000     256     256     256 rw---   [ anon ]
+000019f2030c0000     256     256     256 rw---   [ anon ]
+00001ae32e080000     256     256     256 rw---   [ anon ]
+00001b81db740000     256     256     256 rw---   [ anon ]
+00001cbf58300000      52      52      52 r----   [ anon ]
+00001e3570a00000     264     264     264 rw---   [ anon ]
+00001ec2659c0000     256     256     256 rw---   [ anon ]
+00001f4ec9040000     256       8       8 rw---   [ anon ]
+000024eb2e680000     256     256     256 rw---   [ anon ]
+0000278a94340000     256     256     256 rw---   [ anon ]
+00002a7fa4680000     256     256     256 rw---   [ anon ]
+00002dfc25780000     256     256     256 rw---   [ anon ]
+0000312200d00000     256     256     256 rw---   [ anon ]
+0000318237300000     256     256     256 rw---   [ anon ]
+00003291a4040000     256     228     228 rw---   [ anon ]
+0000340bb2380000     256     256     256 rw---   [ anon ]
+0000342560500000     256     256     256 rw---   [ anon ]
+000035aac88c0000     256       0       0 -----   [ anon ]
+0000362577c00000     256     256     256 rw---   [ anon ]
+0000375169c00000     256       0       0 -----   [ anon ]
+0000381f02680000     256       0       0 -----   [ anon ]
+000039a45c0c0000     256       8       8 rw---   [ anon ]
+00003a4abf700000     256     256     256 rw---   [ anon ]
+00003a9c1f540000     256     256     256 rw---   [ anon ]
+00003bbb12000000     256     256     256 rw---   [ anon ]
+00003c1c10580000     256     256     256 rw---   [ anon ]
+00003cfd85d00000     256     256     256 rw---   [ anon ]
+00003d68ebfc0000     256     256     256 rw---   [ anon ]
+00003e107bb80000     256     256     256 rw---   [ anon ]
+00003fbdf24c0000     256     256     256 rw---   [ anon ]
+00007ad5a4000000     132       8       8 rw---   [ anon ]
+00007ad5a4021000   65404       0       0 -----   [ anon ]
+00007ad5a8000000    2060    2048    2048 rw---   [ anon ]
+00007ad5a8203000   63476       0       0 -----   [ anon ]
+00007ad5b0000000    2024     876     876 rw---   [ anon ]
+00007ad5b01fa000   63512       0       0 -----   [ anon ]
+00007ad5b4000000    1696     660     660 rw---   [ anon ]
+00007ad5b41a8000   63840       0       0 -----   [ anon ]
+00007ad5bac00000       4       0       0 -----   [ anon ]
+00007ad5bac01000    8192       8       8 rw---   [ anon ]
+00007ad5bb600000       4       0       0 -----   [ anon ]
+00007ad5bb601000    8192       8       8 rw---   [ anon ]
+00007ad5bc000000    1148    1084    1084 rw---   [ anon ]
+00007ad5bc11f000   64388       0       0 -----   [ anon ]
+00007ad5c0400000     392     384       0 r-x-- spdlog.node
+00007ad5c0462000    2044       0       0 ----- spdlog.node
+00007ad5c0661000      12      12      12 r---- spdlog.node
+00007ad5c0664000       4       4       4 rw--- spdlog.node
+00007ad5c0800000      60      60       0 r-x-- pty.node
+00007ad5c080f000    2044       0       0 ----- pty.node
+00007ad5c0a0e000       4       4       4 r---- pty.node
+00007ad5c0a0f000       4       4       4 rw--- pty.node
+00007ad5c0c00000       4       0       0 -----   [ anon ]
+00007ad5c0c01000    8192       8       8 rw---   [ anon ]
+00007ad5c1600000       4       0       0 -----   [ anon ]
+00007ad5c1601000    8192       8       8 rw---   [ anon ]
+00007ad5c2000000       4       0       0 -----   [ anon ]
+00007ad5c2001000    8192       8       8 rw---   [ anon ]
+00007ad5c2a00000       4       0       0 -----   [ anon ]
+00007ad5c2a01000    8192       8       8 rw---   [ anon ]
+00007ad5c3400000       8       8       8 rw---   [ anon ]
+00007ad5c3402000       4       0       0 -----   [ anon ]
+00007ad5c3403000     240     240     240 rwx--   [ anon ]
+00007ad5c343f000       4       0       0 -----   [ anon ]
+00007ad5c3440000       8       8       8 rw---   [ anon ]
+00007ad5c3442000       4       0       0 -----   [ anon ]
+00007ad5c3443000     240     240     240 rwx--   [ anon ]
+00007ad5c347f000       4       0       0 -----   [ anon ]
+00007ad5c3480000       8       8       8 rw---   [ anon ]
+00007ad5c3482000       4       0       0 -----   [ anon ]
+00007ad5c3483000     240     240     240 rwx--   [ anon ]
+00007ad5c34bf000       4       0       0 -----   [ anon ]
+00007ad5c34c0000       8       8       8 rw---   [ anon ]
+00007ad5c34c2000       4       0       0 -----   [ anon ]
+00007ad5c34c3000     240     240     240 rwx--   [ anon ]
+00007ad5c34ff000       4       0       0 -----   [ anon ]
+00007ad5c3500000       8       8       8 rw---   [ anon ]
+00007ad5c3502000       4       0       0 -----   [ anon ]
+00007ad5c3503000     240      64      64 rwx--   [ anon ]
+00007ad5c353f000  521220       0       0 -----   [ anon ]
+00007ad5e3240000    1604    1200       0 r-x-- node
+00007ad5e33d1000     188       0       0 -----   [ anon ]
+00007ad5e3600000       4       0       0 -----   [ anon ]
+00007ad5e3601000    8192      24      24 rw---   [ anon ]
+00007ad5e4000000     132       4       4 rw---   [ anon ]
+00007ad5e4021000   65404       0       0 -----   [ anon ]
+00007ad5e8200000       4       0       0 -----   [ anon ]
+00007ad5e8201000    8192      24      24 rw---   [ anon ]
+00007ad5e8c00000       4       0       0 -----   [ anon ]
+00007ad5e8c01000    8192      24      24 rw---   [ anon ]
+00007ad5e9600000       4       0       0 -----   [ anon ]
+00007ad5e9601000    8192      24      24 rw---   [ anon ]
+00007ad5e9ee0000      12      12       0 r---- libnss_files-2.31.so
+00007ad5e9ee3000      28      28       0 r-x-- libnss_files-2.31.so
+00007ad5e9eea000       8       8       0 r---- libnss_files-2.31.so
+00007ad5e9eec000       4       4       4 r---- libnss_files-2.31.so
+00007ad5e9eed000       4       4       4 rw--- libnss_files-2.31.so
+00007ad5e9eee000     468     444     444 rw---   [ anon ]
+00007ad5ea000000       4       0       0 -----   [ anon ]
+00007ad5ea001000    8192      16      16 rw---   [ anon ]
+00007ad5ea808000       4       4       0 r---- libutil-2.31.so
+00007ad5ea809000       4       4       0 r-x-- libutil-2.31.so
+00007ad5ea80a000       4       0       0 r---- libutil-2.31.so
+00007ad5ea80b000       4       4       4 r---- libutil-2.31.so
+00007ad5ea80c000       4       4       4 rw--- libutil-2.31.so
+00007ad5ea817000     260     260     260 rw---   [ anon ]
+00007ad5ea879000      16       0       0 rw---   [ anon ]
+00007ad5ea87d000     496       0       0 -----   [ anon ]
+00007ad5ea8f9000      20      20      20 rw---   [ anon ]
+00007ad5ea8fe000     136     136       0 r---- libc-2.31.so
+00007ad5ea920000    1504    1280       0 r-x-- libc-2.31.so
+00007ad5eaa98000     312     160       0 r---- libc-2.31.so
+00007ad5eaae6000      16      16      16 r---- libc-2.31.so
+00007ad5eaaea000       8       8       8 rw--- libc-2.31.so
+00007ad5eaaec000      16      16      16 rw---   [ anon ]
+00007ad5eaaf0000      24      24       0 r---- libpthread-2.31.so
+00007ad5eaaf6000      68      68       0 r-x-- libpthread-2.31.so
+00007ad5eab07000      24      24       0 r---- libpthread-2.31.so
+00007ad5eab0d000       4       4       4 r---- libpthread-2.31.so
+00007ad5eab0e000       4       4       4 rw--- libpthread-2.31.so
+00007ad5eab0f000      16       4       4 rw---   [ anon ]
+00007ad5eab13000      12      12       0 r---- libgcc_s.so.1
+00007ad5eab16000      72      64       0 r-x-- libgcc_s.so.1
+00007ad5eab28000      16      16       0 r---- libgcc_s.so.1
+00007ad5eab2c000       4       4       4 r---- libgcc_s.so.1
+00007ad5eab2d000       4       4       4 rw--- libgcc_s.so.1
+00007ad5eab2e000      52      52       0 r---- libm-2.31.so
+00007ad5eab3b000     668     316       0 r-x-- libm-2.31.so
+00007ad5eabe2000     612       0       0 r---- libm-2.31.so
+00007ad5eac7b000       4       4       4 r---- libm-2.31.so
+00007ad5eac7c000       4       4       4 rw--- libm-2.31.so
+00007ad5eac7d000     600     600       0 r---- libstdc++.so.6.0.28
+00007ad5ead13000     964     692       0 r-x-- libstdc++.so.6.0.28
+00007ad5eae04000     292      64       0 r---- libstdc++.so.6.0.28
+00007ad5eae4d000       4       0       0 ----- libstdc++.so.6.0.28
+00007ad5eae4e000      44      44      44 r---- libstdc++.so.6.0.28
+00007ad5eae59000      12      12      12 rw--- libstdc++.so.6.0.28
+00007ad5eae5c000      12      12      12 rw---   [ anon ]
+00007ad5eae5f000       4       4       0 r---- libdl-2.31.so
+00007ad5eae60000       8       8       0 r-x-- libdl-2.31.so
+00007ad5eae62000       4       0       0 r---- libdl-2.31.so
+00007ad5eae63000       4       4       4 r---- libdl-2.31.so
+00007ad5eae64000       4       4       4 rw--- libdl-2.31.so
+00007ad5eae65000       8       8       8 rw---   [ anon ]
+00007ad5eae68000       4       0       0 -----   [ anon ]
+00007ad5eae69000      32       8       8 rw---   [ anon ]
+00007ad5eae71000       4       4       0 r---- ld-2.31.so
+00007ad5eae72000     140     140       0 r-x-- ld-2.31.so
+00007ad5eae95000      32      32       0 r---- ld-2.31.so
+00007ad5eae9e000       4       4       4 r---- ld-2.31.so
+00007ad5eae9f000       4       4       4 rw--- ld-2.31.so
+00007ad5eaea0000       4       4       4 rw---   [ anon ]
+00007ffc75351000     136      68      68 rw---   [ stack ]
+00007ffc753c2000      16       0       0 r----   [ anon ]
+00007ffc753c6000       8       4       0 r-x--   [ anon ]
+ffffffffff600000       4       0       0 --x--   [ anon ]
+---------------- ------- ------- ------- 
+total kB         1121500   66804   24716
+
+Example 2:
+@Avancir ➜ /workspaces/csc425.coding.8 (main) $ pmap -x 4651
+4651:   /bin/bash --init-file /vscode/bin/linux-x64/38c31bc77e0dd6ae88a4e9cc93428cc27a56ba40/out/vs/workbench/contrib/terminal/browser/media/shellIntegration-bash.sh
+Address           Kbytes     RSS   Dirty Mode  Mapping
+000057071de34000     180     180       0 r---- bash
+000057071de61000     708     708       0 r-x-- bash
+000057071df12000     220     116       0 r---- bash
+000057071df49000      16      16      16 r---- bash
+000057071df4d000      36      36      36 rw--- bash
+000057071df56000      40      40      40 rw---   [ anon ]
+000057071e144000    8236    8196    8196 rw---   [ anon ]
+00007ab817203000      12      12       0 r---- libnss_files-2.31.so
+00007ab817206000      28      28       0 r-x-- libnss_files-2.31.so
+00007ab81720d000       8       8       0 r---- libnss_files-2.31.so
+00007ab81720f000       4       4       4 r---- libnss_files-2.31.so
+00007ab817210000       4       4       4 rw--- libnss_files-2.31.so
+00007ab817211000      24       0       0 rw---   [ anon ]
+00007ab817221000     200     120       0 r---- LC_CTYPE
+00007ab817253000       4       4       0 r---- LC_NUMERIC
+00007ab817254000       4       4       0 r---- LC_TIME
+00007ab817255000    1484     156       0 r---- LC_COLLATE
+00007ab8173c8000       4       4       0 r---- LC_MONETARY
+00007ab8173c9000       4       4       0 r---- SYS_LC_MESSAGES
+00007ab8173ca000       4       4       0 r---- LC_PAPER
+00007ab8173cb000       4       4       0 r---- LC_NAME
+00007ab8173cc000    2968      64       0 r---- locale-archive
+00007ab8176b2000      12       8       8 rw---   [ anon ]
+00007ab8176b5000     136     136       0 r---- libc-2.31.so
+00007ab8176d7000    1504    1312       0 r-x-- libc-2.31.so
+00007ab81784f000     312     192       0 r---- libc-2.31.so
+00007ab81789d000      16      16      16 r---- libc-2.31.so
+00007ab8178a1000       8       8       8 rw--- libc-2.31.so
+00007ab8178a3000      16      16      16 rw---   [ anon ]
+00007ab8178a7000       4       4       0 r---- libdl-2.31.so
+00007ab8178a8000       8       8       0 r-x-- libdl-2.31.so
+00007ab8178aa000       4       0       0 r---- libdl-2.31.so
+00007ab8178ab000       4       4       4 r---- libdl-2.31.so
+00007ab8178ac000       4       4       4 rw--- libdl-2.31.so
+00007ab8178ad000      56      56       0 r---- libtinfo.so.6.2
+00007ab8178bb000      60      60       0 r-x-- libtinfo.so.6.2
+00007ab8178ca000      56      56       0 r---- libtinfo.so.6.2
+00007ab8178d8000      16      16      16 r---- libtinfo.so.6.2
+00007ab8178dc000       4       4       4 rw--- libtinfo.so.6.2
+00007ab8178dd000       8       8       8 rw---   [ anon ]
+00007ab8178df000       4       4       0 r---- LC_ADDRESS
+00007ab8178e0000       4       4       0 r---- LC_TELEPHONE
+00007ab8178e1000       4       4       0 r---- LC_MEASUREMENT
+00007ab8178e2000      28      28       0 r--s- gconv-modules.cache
+00007ab8178e9000       4       4       0 r---- ld-2.31.so
+00007ab8178ea000     140     140       0 r-x-- ld-2.31.so
+00007ab81790d000      32      32       0 r---- ld-2.31.so
+00007ab817915000       4       4       0 r---- LC_IDENTIFICATION
+00007ab817916000       4       4       4 r---- ld-2.31.so
+00007ab817917000       4       4       4 rw--- ld-2.31.so
+00007ab817918000       4       4       4 rw---   [ anon ]
+00007ffef4e97000     136     112     112 rw---   [ stack ]
+00007ffef4fb5000      16       0       0 r----   [ anon ]
+00007ffef4fb9000       8       4       0 r-x--   [ anon ]
+ffffffffff600000       4       0       0 --x--   [ anon ]
+---------------- ------- ------- ------- 
+total kB           16816   11968    8504
+
+Example 3:
+@Avancir ➜ /workspaces/csc425.coding.8 (main) $ pmap -x 2973
+2973:   /vscode/bin/linux-x64/38c31bc77e0dd6ae88a4e9cc93428cc27a56ba40/node --dns-result-order=ipv4first /vscode/bin/linux-x64/38c31bc77e0dd6ae88a4e9cc93428cc27a56ba40/out/bootstrap-fork --type=extensionHost --transformURIs --useHostProxy=false
+Address           Kbytes     RSS   Dirty Mode  Mapping
+0000000000400000    7640    6284       0 r---- node
+0000000000b76000   27304   23108       0 r-x-- node
+0000000002800000       4       0       0 r-x-- node
+0000000002801000   46816   14044       0 r---- node
+00000000055b9000      16      16       8 r---- node
+00000000055bd000     124     124      92 rw--- node
+00000000055dc000     180     168     168 rw---   [ anon ]
+0000000006f46000   25848   23208   23208 rw---   [ anon ]
+0000001ff1080000     256     256     256 rw---   [ anon ]
+0000002019980000     256     256     256 rw---   [ anon ]
+00000034e6900000     256     256     256 rw---   [ anon ]
+0000003e49c80000     256     256     256 rw---   [ anon ]
+0000003fbfd00000     256     256     256 rw---   [ anon ]
+0000004617b80000     256     256     256 rw---   [ anon ]
+000000574ea40000     256     256     256 rw---   [ anon ]
+0000005754080000     256     256     256 rw---   [ anon ]
+000000a755cc0000     256     256     256 rw---   [ anon ]
+000000df21c80000     256     256     256 rw---   [ anon ]
+000000e800540000     256     256     256 rw---   [ anon ]
+000000fd6fb40000     256     256     256 rw---   [ anon ]
+00000151ccf00000     256     256     256 rw---   [ anon ]
+000001634e340000     256     256     256 rw---   [ anon ]
+0000019e15740000     256     256     256 rw---   [ anon ]
+000001fb57040000     256     256     256 rw---   [ anon ]
+0000023d70780000     256     256     256 rw---   [ anon ]
+0000024c34500000   10196   10196   10196 rw---   [ anon ]
+0000025c75500000     256     256     256 rw---   [ anon ]
+0000028f87640000     256     256     256 rw---   [ anon ]
+0000029438a00000     256     256     256 rw---   [ anon ]
+000002d1f8340000     256     256     256 rw---   [ anon ]
+000002f639a40000     256     256     256 rw---   [ anon ]
+00000319d9000000     256     256     256 rw---   [ anon ]
+0000032ad9040000     256     256     256 rw---   [ anon ]
+00000355c8f40000     256     256     256 rw---   [ anon ]
+0000036534340000     256     256     256 rw---   [ anon ]
+0000038359840000     256     256     256 rw---   [ anon ]
+00000384275c0000     256     256     256 rw---   [ anon ]
+000003adf2400000     256     256     256 rw---   [ anon ]
+000003c209ac0000     256     256     256 rw---   [ anon ]
+000003ff37300000     256     256     256 rw---   [ anon ]
+000004026ebc0000     256     256     256 rw---   [ anon ]
+0000040d12d40000     256     256     256 rw---   [ anon ]
+00000413cda80000     256     256     256 rw---   [ anon ]
+0000044fa4400000     256     256     256 rw---   [ anon ]
+00000465ecf80000     256     256     256 rw---   [ anon ]
+0000049a38980000     256     256     256 rw---   [ anon ]
+000004aaf69c0000    5340    5340    5340 rw---   [ anon ]
+000004b367700000     256     256     256 rw---   [ anon ]
+000004c900b80000     256     256     256 rw---   [ anon ]
+000004d34b200000     256     256     256 rw---   [ anon ]
+000004d484440000     256     256     256 rw---   [ anon ]
+000004e2d0c40000     256     256     256 rw---   [ anon ]
+000004f460880000     256     256     256 rw---   [ anon ]
+0000050c5d680000     256     256     256 rw---   [ anon ]
+0000051d4d440000     456     456     456 rw---   [ anon ]
+0000057f5a7c0000     256     256     256 rw---   [ anon ]
+000005d0a08c0000     256     256     256 rw---   [ anon ]
+00000629cfd80000     256     256     256 rw---   [ anon ]
+0000063521a40000     256     256     256 rw---   [ anon ]
+00000636e3f00000     256     256     256 rw---   [ anon ]
+0000063c500c0000     256     256     256 rw---   [ anon ]
+00000659786c0000     256     256     256 rw---   [ anon ]
+0000065b1a640000     256      52      52 rw---   [ anon ]
+000006628dd00000     256     256     256 rw---   [ anon ]
+00000663c7100000     256     256     256 rw---   [ anon ]
+000006815d1c0000     212     212     212 rw---   [ anon ]
+0000069c6aa80000     256     256     256 rw---   [ anon ]
+000006b7b4a80000     256     256     256 rw---   [ anon ]
+000006c0ad300000     256     256     256 rw---   [ anon ]
+000006c1b7900000     256     256     256 rw---   [ anon ]
+000006d6b2a40000     256     256     256 rw---   [ anon ]
+00000703d7bc0000     204     204     204 rw---   [ anon ]
+0000070713b40000     256     256     256 rw---   [ anon ]
+0000070ab4e00000     256     256     256 rw---   [ anon ]
+0000072ddc300000     256     256     256 rw---   [ anon ]
+0000075da2800000     256     256     256 rw---   [ anon ]
+0000075f0b5c0000     256     256     256 rw---   [ anon ]
+00000769cd0c0000     256     256     256 rw---   [ anon ]
+0000076ed82c0000     256     256     256 rw---   [ anon ]
+00000777c1740000     256     256     256 rw---   [ anon ]
+00000790d6900000     256     256     256 rw---   [ anon ]
+000007a0f64c0000     256     256     256 rw---   [ anon ]
+000007abaf5c0000     256     256     256 rw---   [ anon ]
+000007b2ef600000     256     256     256 rw---   [ anon ]
+000007f682680000     256     256     256 rw---   [ anon ]
+00000811a3d80000     256     256     256 rw---   [ anon ]
+0000084114ec0000     256     256     256 rw---   [ anon ]
+0000084c76c00000     256     256     256 rw---   [ anon ]
+00000858ea440000     256     256     256 rw---   [ anon ]
+0000087eaaf00000     256     256     256 rw---   [ anon ]
+000008ab23a80000     256     256     256 rw---   [ anon ]
+000008c079b80000     256     256     256 rw---   [ anon ]
+000008d9b29c0000     256     256     256 rw---   [ anon ]
+000008ef29dc0000     256     256     256 rw---   [ anon ]
+000008fd85240000     256     256     256 rw---   [ anon ]
+00000939e83c0000     256     256     256 rw---   [ anon ]
+00000966b3c80000     508     508     508 rw---   [ anon ]
+0000096deadc0000     256     256     256 rw---   [ anon ]
+0000098b89d40000     256     256     256 rw---   [ anon ]
+000009904eec0000     256     256     256 rw---   [ anon ]
+000009f6df400000     256     256     256 rw---   [ anon ]
+00000a0564500000     256     256     256 rw---   [ anon ]
+00000a3031880000     256     256     256 rw---   [ anon ]
+00000a32381c0000     256     256     256 rw---   [ anon ]
+00000a42e0540000     256     256     256 rw---   [ anon ]
+00000a7fcd080000     256     256     256 rw---   [ anon ]
+00000aacde9c0000     256     256     256 rw---   [ anon ]
+00000aae94100000     256     256     256 rw---   [ anon ]
+00000ab7d3b00000     256     256     256 rw---   [ anon ]
+00000ab943040000     256     256     256 rw---   [ anon ]
+00000af4e8880000     256     256     256 rw---   [ anon ]
+00000b1aa2580000     256     256     256 rw---   [ anon ]
+00000b2742a40000     256     256     256 rw---   [ anon ]
+00000b8e08200000    1736    1736    1736 rw---   [ anon ]
+00000bab21e80000     256     256     256 rw---   [ anon ]
+00000bc6af480000     256     256     256 rw---   [ anon ]
+00000bdb49d80000     256     256     256 rw---   [ anon ]
+00000bea63700000     256     256     256 rw---   [ anon ]
+00000bfa31780000     256     256     256 rw---   [ anon ]
+00000c043ae40000     488     488     488 rw---   [ anon ]
+00000c2157740000     256     256     256 rw---   [ anon ]
+00000c31fb080000     256     256     256 rw---   [ anon ]
+00000c5f2dbc0000     256     256     256 rw---   [ anon ]
+00000c657a100000     256     256     256 rw---   [ anon ]
+00000c8c5c940000     256     256     256 rw---   [ anon ]
+00000ca99dfc0000     256     256     256 rw---   [ anon ]
+00000cb940200000     264     264     264 rw---   [ anon ]
+00000cf1dde40000     256     256     256 rw---   [ anon ]
+00000d44b2b80000     656     656     656 rw---   [ anon ]
+00000d616ae40000     256     256     256 rw---   [ anon ]
+00000d8030880000     256     256     256 rw---   [ anon ]
+00000d8d27440000     256     256     256 rw---   [ anon ]
+00000d9bdb4c0000     256     256     256 rw---   [ anon ]
+00000db52ff00000     256     256     256 rw---   [ anon ]
+00000df5cf300000     256     256     256 rw---   [ anon ]
+00000e0e4b840000     256     256     256 rw---   [ anon ]
+00000e1965100000     256     256     256 rw---   [ anon ]
+00000e3ee20c0000     256     256     256 rw---   [ anon ]
+00000e4bb4dc0000     256     256     256 rw---   [ anon ]
+00000e6d00a80000     256     256     256 rw---   [ anon ]
+00000e9b142c0000     256     256     256 rw---   [ anon ]
+00000ea0aa080000     256     256     256 rw---   [ anon ]
+00000eb3df640000     256     256     256 rw---   [ anon ]
+00000ec7148c0000     256     256     256 rw---   [ anon ]
+00000eca94080000     256     256     256 rw---   [ anon ]
+00000f0f67f00000     256     256     256 rw---   [ anon ]
+00000f2894b00000     256     256     256 rw---   [ anon ]
+00000f42bb300000     256     256     256 rw---   [ anon ]
+00000f65bc480000     256     256     256 rw---   [ anon ]
+00000fbe03e40000    9996    9996    9996 rw---   [ anon ]
+00000fcb7f500000     256     256     256 rw---   [ anon ]
+000010057cd40000     256     256     256 rw---   [ anon ]
+00001033fd3c0000     256     256     256 rw---   [ anon ]
+0000104ab9740000     256     256     256 rw---   [ anon ]
+000010533f4c0000     256     256     256 rw---   [ anon ]
+000010693f200000     256     256     256 rw---   [ anon ]
+000010a90f040000     256     256     256 rw---   [ anon ]
+000010a94a500000     256     256     256 rw---   [ anon ]
+000010cf78440000     256     256     256 rw---   [ anon ]
+000010d211dc0000     256     256     256 rw---   [ anon ]
+0000115290040000     256     256     256 rw---   [ anon ]
+0000115e85bc0000     256     256     256 rw---   [ anon ]
+0000117852f40000     256     256     256 rw---   [ anon ]
+000011b141700000     256     256     256 rw---   [ anon ]
+000011b8d9e00000     256     256     256 rw---   [ anon ]
+000011b917440000     256     256     256 rw---   [ anon ]
+000011bc3cd40000     256     256     256 rw---   [ anon ]
+000011cce4940000     256     256     256 rw---   [ anon ]
+000011d64ab40000     256     256     256 rw---   [ anon ]
+000011e12a4c0000     256     256     256 rw---   [ anon ]
+0000124f09500000     256     256     256 rw---   [ anon ]
+00001285fa400000     256     256     256 rw---   [ anon ]
+0000129aa89c0000     256     256     256 rw---   [ anon ]
+000012b7a1f40000     256     256     256 rw---   [ anon ]
+000012c3ed900000     256     256     256 rw---   [ anon ]
+00001320c3180000     256     256     256 rw---   [ anon ]
+0000133f586c0000     256     256     256 rw---   [ anon ]
+000013400c240000     256     256     256 rw---   [ anon ]
+000013684de80000     256       8       8 rw---   [ anon ]
+00001379f9900000     256     256     256 rw---   [ anon ]
+000013a83bec0000     256     256     256 rw---   [ anon ]
+000013bfb2940000     256     256     256 rw---   [ anon ]
+000013c933b00000     256     256     256 rw---   [ anon ]
+000013f0e74c0000     256     256     256 rw---   [ anon ]
+0000141fbf640000     256     256     256 rw---   [ anon ]
+00001424afe80000     256     256     256 rw---   [ anon ]
+0000144829300000     256     256     256 rw---   [ anon ]
+0000147f91a80000     256     256     256 rw---   [ anon ]
+00001480d0580000     256     256     256 rw---   [ anon ]
+000014812b79f000      52      52      52 rwx--   [ anon ]
+000014812b7ac000     376       0       0 -----   [ anon ]
+0000148bb8340000     256     256     256 rw---   [ anon ]
+0000150635480000     256     256     256 rw---   [ anon ]
+0000153c60380000     256     256     256 rw---   [ anon ]
+0000153d9aac0000     256     256     256 rw---   [ anon ]
+0000155a6bcc0000     256     256     256 rw---   [ anon ]
+0000156b41080000     256     256     256 rw---   [ anon ]
+00001580b0cc0000     256     256     256 rw---   [ anon ]
+000015a43e140000     256     256     256 rw---   [ anon ]
+000015df38640000     256     256     256 rw---   [ anon ]
+000015fa4ce40000     256     256     256 rw---   [ anon ]
+00001622a4fc0000     256     256     256 rw---   [ anon ]
+0000162945980000    3188    3188    3188 rw---   [ anon ]
+0000164c91c80000     256     256     256 rw---   [ anon ]
+00001660e74c0000     256     256     256 rw---   [ anon ]
+0000167d5a500000     256     256     256 rw---   [ anon ]
+000016aeaab00000     256     256     256 rw---   [ anon ]
+000016c7bdcc0000     256     256     256 rw---   [ anon ]
+000016e709180000     256     256     256 rw---   [ anon ]
+0000170c0a380000     256     256     256 rw---   [ anon ]
+0000172199b80000     256     256     256 rw---   [ anon ]
+00001766aa540000     256     256     256 rw---   [ anon ]
+000017891f180000     256     256     256 rw---   [ anon ]
+0000178b0ccc0000     256     256     256 rw---   [ anon ]
+000017a3defc0000     256     256     256 rw---   [ anon ]
+000017a43ea00000     256     256     256 rw---   [ anon ]
+000017d4fe180000     256     256     256 rw---   [ anon ]
+000017f5bf1c0000     256     256     256 rw---   [ anon ]
+0000180ba5a00000     256     256     256 rw---   [ anon ]
+0000183798e00000     256     256     256 rw---   [ anon ]
+0000184689c40000     256     256     256 rw---   [ anon ]
+00001893c2a40000     256     256     256 rw---   [ anon ]
+000018d055e80000     256     256     256 rw---   [ anon ]
+000018e667d40000     256     256     256 rw---   [ anon ]
+000018e856100000     256     256     256 rw---   [ anon ]
+000018f60fec0000     256     256     256 rw---   [ anon ]
+0000193ff1b00000     256     256     256 rw---   [ anon ]
+0000197506340000     256     256     256 rw---   [ anon ]
+000019769c580000     256     256     256 rw---   [ anon ]
+0000197909240000     256     256     256 rw---   [ anon ]
+00001994882c0000     256     256     256 rw---   [ anon ]
+000019a532f80000     256     256     256 rw---   [ anon ]
+000019b0f5300000     256     256     256 rw---   [ anon ]
+000019c0ad340000     256     256     256 rw---   [ anon ]
+000019cb6d0c0000     256     256     256 rw---   [ anon ]
+000019dff0940000     256     256     256 rw---   [ anon ]
+000019ffdfe80000     256     256     256 rw---   [ anon ]
+00001a040d540000     256     256     256 rw---   [ anon ]
+00001a613fb40000     256     256     256 rw---   [ anon ]
+00001a83a5680000     256     256     256 rw---   [ anon ]
+00001a8c90340000     256     256     256 rw---   [ anon ]
+00001aab9bf00000     256     256     256 rw---   [ anon ]
+00001ac934600000     256     256     256 rw---   [ anon ]
+00001b1de5380000     256     256     256 rw---   [ anon ]
+00001b46d9080000     256     256     256 rw---   [ anon ]
+00001b5867440000     256     256     256 rw---   [ anon ]
+00001b5add180000     256     256     256 rw---   [ anon ]
+00001b64a59c0000     256     256     256 rw---   [ anon ]
+00001b6e18740000     256     256     256 rw---   [ anon ]
+00001bbda1e40000     256     256     256 rw---   [ anon ]
+00001bd7b7780000     256     256     256 rw---   [ anon ]
+00001c0207800000     256     256     256 rw---   [ anon ]
+00001c25c5500000     256     256     256 rw---   [ anon ]
+00001c4a7b840000     256     256     256 rw---   [ anon ]
+00001c81b6cc0000     256     256     256 rw---   [ anon ]
+00001cbd9cac0000     256     256     256 rw---   [ anon ]
+00001cbf74480000     256     256     256 rw---   [ anon ]
+00001cc3f4e00000     256     256     256 rw---   [ anon ]
+00001ce3df7c0000     256     256     256 rw---   [ anon ]
+00001d1a9c840000     256     256     256 rw---   [ anon ]
+00001d1ead6c0000     256     256     256 rw---   [ anon ]
+00001d2dab1c0000     256     256     256 rw---   [ anon ]
+00001d2ebd580000     256     256     256 rw---   [ anon ]
+00001d4c51640000     256     256     256 rw---   [ anon ]
+00001d72d17c0000     256     256     256 rw---   [ anon ]
+00001d72f3e80000     256     256     256 rw---   [ anon ]
+00001d8021bc0000     256     256     256 rw---   [ anon ]
+00001d87130c0000     256     256     256 rw---   [ anon ]
+00001d932ab40000     256     256     256 rw---   [ anon ]
+00001d975f080000     256     256     256 rw---   [ anon ]
+00001daf90f40000     256     256     256 rw---   [ anon ]
+00001db2f8840000     256     256     256 rw---   [ anon ]
+00001dcf9a180000     256     256     256 rw---   [ anon ]
+00001de494080000     256     256     256 rw---   [ anon ]
+00001df135180000     256     256     256 rw---   [ anon ]
+00001e05b0940000     256     256     256 rw---   [ anon ]
+00001e44ea1c0000     256     256     256 rw---   [ anon ]
+00001e4ac33c0000      52      52      52 r----   [ anon ]
+00001e5b0a040000     256     256     256 rw---   [ anon ]
+00001e5b715c0000     256     256     256 rw---   [ anon ]
+00001e7354e80000     256     256     256 rw---   [ anon ]
+00001e7f5dac0000     256     256     256 rw---   [ anon ]
+00001eb3b5940000     256     256     256 rw---   [ anon ]
+00001ec886c80000     256     256     256 rw---   [ anon ]
+00001ef109b80000     256     256     256 rw---   [ anon ]
+00001ef20a140000     256     256     256 rw---   [ anon ]
+00001f5a5c080000     256     256     256 rw---   [ anon ]
+00001f5a71f80000     256     256     256 rw---   [ anon ]
+00001f5fd44c0000     256     256     256 rw---   [ anon ]
+00001f6565140000     256     256     256 rw---   [ anon ]
+00001f7ab8e80000     256     256     256 rw---   [ anon ]
+00001fa407740000     256     256     256 rw---   [ anon ]
+00001fa5258c0000     256     256     256 rw---   [ anon ]
+00001fb1394c0000     256     256     256 rw---   [ anon ]
+00001fe5fce40000     256     256     256 rw---   [ anon ]
+000020248de80000     256     256     256 rw---   [ anon ]
+00002058860c0000     256     256     256 rw---   [ anon ]
+000020738d800000     256     256     256 rw---   [ anon ]
+0000207656ac0000     256     256     256 rw---   [ anon ]
+0000209484600000     256     256     256 rw---   [ anon ]
+000020acb8e00000     256     256     256 rw---   [ anon ]
+000020c0e6b00000     256     256     256 rw---   [ anon ]
+000020ce76900000     256     256     256 rw---   [ anon ]
+0000210dae580000     256     256     256 rw---   [ anon ]
+0000215ae5a00000     256     256     256 rw---   [ anon ]
+0000215efc9c0000     256     256     256 rw---   [ anon ]
+000021c66dac0000     256     256     256 rw---   [ anon ]
+000021e456200000     256     256     256 rw---   [ anon ]
+000021e868600000     256     256     256 rw---   [ anon ]
+000021ec86c80000     256     256     256 rw---   [ anon ]
+000021f422780000     256     256     256 rw---   [ anon ]
+0000222659740000     256     256     256 rw---   [ anon ]
+000022499ecc0000     256     256     256 rw---   [ anon ]
+0000225fe7c40000     256     256     256 rw---   [ anon ]
+0000228556080000     256     256     256 rw---   [ anon ]
+000022bee3480000     256     256     256 rw---   [ anon ]
+000022ee1b140000     256     256     256 rw---   [ anon ]
+000022f26fd00000     256     256     256 rw---   [ anon ]
+000022f5764c0000     256     256     256 rw---   [ anon ]
+000022f7ded80000     256     256     256 rw---   [ anon ]
+00002323edbc0000     256     256     256 rw---   [ anon ]
+00002337aba00000     256     256     256 rw---   [ anon ]
+00002371dca80000     256     256     256 rw---   [ anon ]
+0000238cbf180000     256     256     256 rw---   [ anon ]
+00002397d7d80000     256     256     256 rw---   [ anon ]
+000023d407400000     256     256     256 rw---   [ anon ]
+000023d5feec0000     256     256     256 rw---   [ anon ]
+00002434e7b80000     256     256     256 rw---   [ anon ]
+0000245775180000     256     256     256 rw---   [ anon ]
+00002475e8e40000     256     256     256 rw---   [ anon ]
+000024a7d1300000     256     256     256 rw---   [ anon ]
+000024be953c0000     256     256     256 rw---   [ anon ]
+000024c9863c0000     256     256     256 rw---   [ anon ]
+0000252c88180000     256     256     256 rw---   [ anon ]
+0000253030080000     256     256     256 rw---   [ anon ]
+00002554dba40000     256     256     256 rw---   [ anon ]
+00002574ab7c0000     256     256     256 rw---   [ anon ]
+0000257f0b1c0000     256     256     256 rw---   [ anon ]
+0000259d15300000     256     256     256 rw---   [ anon ]
+000025aafec40000     256     256     256 rw---   [ anon ]
+000025d46da40000     256     256     256 rw---   [ anon ]
+000026153fb80000     256     256     256 rw---   [ anon ]
+0000261f09740000     256     256     256 rw---   [ anon ]
+00002623f0cc0000     256     256     256 rw---   [ anon ]
+000026297ad40000     256     256     256 rw---   [ anon ]
+000026526f640000     256     256     256 rw---   [ anon ]
+0000269319f40000     256     256     256 rw---   [ anon ]
+000026954f6c0000     256     256     256 rw---   [ anon ]
+000026c6535c0000     256     256     256 rw---   [ anon ]
+000026e141d80000     256     256     256 rw---   [ anon ]
+0000270cc37c0000     256     256     256 rw---   [ anon ]
+00002775c6140000     256     256     256 rw---   [ anon ]
+000027be9dd80000     256     256     256 rw---   [ anon ]
+0000281abb300000     256     256     256 rw---   [ anon ]
+0000284490900000     256     256     256 rw---   [ anon ]
+0000287035e00000     256     256     256 rw---   [ anon ]
+000028801fbc0000     256     256     256 rw---   [ anon ]
+000028a72b080000     256     256     256 rw---   [ anon ]
+000028bae9ec0000     256     256     256 rw---   [ anon ]
+000028c4f2280000     256     256     256 rw---   [ anon ]
+00002922bfc00000     256     256     256 rw---   [ anon ]
+0000292eef2c0000     256     256     256 rw---   [ anon ]
+00002980bd340000     256     256     256 rw---   [ anon ]
+00002986b46c0000     256     256     256 rw---   [ anon ]
+0000299a77980000     256     256     256 rw---   [ anon ]
+000029b80a300000     256     256     256 rw---   [ anon ]
+000029b9106c0000     256     256     256 rw---   [ anon ]
+000029cb41a40000     256     256     256 rw---   [ anon ]
+000029e3b4240000     256     256     256 rw---   [ anon ]
+000029f07af00000     256     256     256 rw---   [ anon ]
+000029f08a2c0000     256     256     256 rw---   [ anon ]
+000029fa5f040000     256     256     256 rw---   [ anon ]
+00002a1ac2ac0000     256     256     256 rw---   [ anon ]
+00002a3e29c80000     256     256     256 rw---   [ anon ]
+00002a82008c0000     256     256     256 rw---   [ anon ]
+00002a969acc0000     256     256     256 rw---   [ anon ]
+00002a9fd0a40000     256     256     256 rw---   [ anon ]
+00002ab1434c0000     256     256     256 rw---   [ anon ]
+00002ab2577c0000     256     256     256 rw---   [ anon ]
+00002ab4c9540000     256     256     256 rw---   [ anon ]
+00002ac985dc0000     256     256     256 rw---   [ anon ]
+00002af203c00000     256     256     256 rw---   [ anon ]
+00002b4036fc0000     256     256     256 rw---   [ anon ]
+00002b70e3940000     256     256     256 rw---   [ anon ]
+00002b8da60c0000     256     256     256 rw---   [ anon ]
+00002b8de8440000     256     256     256 rw---   [ anon ]
+00002b8e7ae80000     256     256     256 rw---   [ anon ]
+00002b99a7140000     256     256     256 rw---   [ anon ]
+00002baba34c0000     256     256     256 rw---   [ anon ]
+00002bcbb7ac0000     184     184     184 rw---   [ anon ]
+00002bcfeaf00000     256     256     256 rw---   [ anon ]
+00002bd5c7080000     256     256     256 rw---   [ anon ]
+00002bd9e9340000     256     256     256 rw---   [ anon ]
+00002bddfc040000     256     256     256 rw---   [ anon ]
+00002be6e0fc0000     256     256     256 rw---   [ anon ]
+00002be9ce8c0000     256     256     256 rw---   [ anon ]
+00002bea75800000     256     256     256 rw---   [ anon ]
+00002bee0a6c0000     256     256     256 rw---   [ anon ]
+00002c25d8340000    2144    2144    2144 rw---   [ anon ]
+00002c2fee9c0000     256     256     256 rw---   [ anon ]
+00002c323f0c0000     256     256     256 rw---   [ anon ]
+00002c3d3e640000     256     256     256 rw---   [ anon ]
+00002c582ddc0000     256     256     256 rw---   [ anon ]
+00002ca152c80000     256     256     256 rw---   [ anon ]
+00002ca784780000     256     256     256 rw---   [ anon ]
+00002cba09fc0000     256     256     256 rw---   [ anon ]
+00002ccdd5740000     256     256     256 rw---   [ anon ]
+00002ccfc8740000     256     256     256 rw---   [ anon ]
+00002ce7c9800000     256     256     256 rw---   [ anon ]
+00002cf748340000     256     256     256 rw---   [ anon ]
+00002d049ca00000     256     256     256 rw---   [ anon ]
+00002d2badf00000     256     256     256 rw---   [ anon ]
+00002d9f77200000     256       0       0 -----   [ anon ]
+00002da9b2cc0000     256     256     256 rw---   [ anon ]
+00002dc78d300000     256     256     256 rw---   [ anon ]
+00002deba7a00000     256     256     256 rw---   [ anon ]
+00002dfcdc880000   10196   10196   10196 rw---   [ anon ]
+00002e0f07180000     256     256     256 rw---   [ anon ]
+00002e3137dc0000     256     256     256 rw---   [ anon ]
+00002e36ea400000     368     368     368 rw---   [ anon ]
+00002e3fbef40000     256     256     256 rw---   [ anon ]
+00002e56c8a80000     256     256     256 rw---   [ anon ]
+00002e79c1580000     256     256     256 rw---   [ anon ]
+00002e8a60840000     256     256     256 rw---   [ anon ]
+00002ec1a9180000     256     256     256 rw---   [ anon ]
+00002f013dfc0000     256     256     256 rw---   [ anon ]
+00002f0eae9c0000     256     256     256 rw---   [ anon ]
+00002f3329800000     256     256     256 rw---   [ anon ]
+00002f4079b00000     256     256     256 rw---   [ anon ]
+00002f50c3240000     256     256     256 rw---   [ anon ]
+00002f5619500000     256     256     256 rw---   [ anon ]
+00002f69a1d40000     256     256     256 rw---   [ anon ]
+00002fa12eb00000     256     256     256 rw---   [ anon ]
+00002fa348780000     256     256     256 rw---   [ anon ]
+00002fc016e40000     256     256     256 rw---   [ anon ]
+00002fec14580000     256     256     256 rw---   [ anon ]
+0000300c36880000     256     256     256 rw---   [ anon ]
+000030196e500000     256     256     256 rw---   [ anon ]
+00003021f6cc0000     256     256     256 rw---   [ anon ]
+0000302a79bc0000     256     256     256 rw---   [ anon ]
+00003031fc6c0000     256     256     256 rw---   [ anon ]
+0000307929f40000     256     256     256 rw---   [ anon ]
+000030a2cff00000     256     256     256 rw---   [ anon ]
+000030b457d00000     256     256     256 rw---   [ anon ]
+000030b69b600000     256     256     256 rw---   [ anon ]
+000030ba9b6c0000     256     256     256 rw---   [ anon ]
+000030cc1c440000     256     256     256 rw---   [ anon ]
+000030cea2e80000     256     256     256 rw---   [ anon ]
+0000312b46200000     256     256     256 rw---   [ anon ]
+0000312b7a400000     256     256     256 rw---   [ anon ]
+000031440c900000     256     256     256 rw---   [ anon ]
+0000315877100000     256     256     256 rw---   [ anon ]
+00003164f1c40000     256     256     256 rw---   [ anon ]
+0000319645e40000     256     256     256 rw---   [ anon ]
+000031cd98340000     256     256     256 rw---   [ anon ]
+000031dad5080000     256     256     256 rw---   [ anon ]
+000031dfb7280000     256     256     256 rw---   [ anon ]
+000031e27d700000     256     256     256 rw---   [ anon ]
+000031f3ac400000     256     256     256 rw---   [ anon ]
+000031fcef040000     628     628     628 rw---   [ anon ]
+0000321f505c0000     256     256     256 rw---   [ anon ]
+0000327738100000     168     168     168 rw---   [ anon ]
+00003283228c0000     256     256     256 rw---   [ anon ]
+00003285b7740000     256     256     256 rw---   [ anon ]
+00003298e5a00000     256     256     256 rw---   [ anon ]
+000032a6bb380000     256     256     256 rw---   [ anon ]
+000032b1a1540000     256     256     256 rw---   [ anon ]
+000032d6c8b80000     256     256     256 rw---   [ anon ]
+0000332025180000     256     256     256 rw---   [ anon ]
+0000332da2c00000     256     256     256 rw---   [ anon ]
+0000332f8e140000     256     256     256 rw---   [ anon ]
+0000333868140000     256       0       0 -----   [ anon ]
+00003358a5ba9000     192     192     192 rwx--   [ anon ]
+00003358a5bd9000      36       0       0 -----   [ anon ]
+000033732c5c0000     256     256     256 rw---   [ anon ]
+0000337e28b80000     256     256     256 rw---   [ anon ]
+000033a2d1400000     256     256     256 rw---   [ anon ]
+0000342809080000     256     256     256 rw---   [ anon ]
+000034414ee80000     256     256     256 rw---   [ anon ]
+00003443a5940000     256     256     256 rw---   [ anon ]
+0000344804680000     256     256     256 rw---   [ anon ]
+0000346729640000     256     256     256 rw---   [ anon ]
+00003468f2180000     256     256     256 rw---   [ anon ]
+0000348d88a00000     256     256     256 rw---   [ anon ]
+000034b940900000     256     256     256 rw---   [ anon ]
+000034d4d6b40000     256     256     256 rw---   [ anon ]
+000034d95cb80000     256       0       0 -----   [ anon ]
+000034e497540000     256     256     256 rw---   [ anon ]
+000034f9b6e40000     256     256     256 rw---   [ anon ]
+0000354916440000     256     256     256 rw---   [ anon ]
+0000355766880000     256     256     256 rw---   [ anon ]
+0000356bd89c0000     256     256     256 rw---   [ anon ]
+00003573cba00000     256     256     256 rw---   [ anon ]
+0000357f79340000     212     212     212 rw---   [ anon ]
+0000357fccc80000     256     256     256 rw---   [ anon ]
+0000358109900000     256     256     256 rw---   [ anon ]
+000035d607300000     256     256     256 rw---   [ anon ]
+000035dcefc00000     256     256     256 rw---   [ anon ]
+000035e4abb00000     256     256     256 rw---   [ anon ]
+0000360989000000     256     256     256 rw---   [ anon ]
+000036155b3c0000     256     256     256 rw---   [ anon ]
+0000362d18e00000     164     164     164 rw---   [ anon ]
+0000363ef5280000     256     256     256 rw---   [ anon ]
+00003658ad300000    2240    2240    2240 rw---   [ anon ]
+000036aa3d240000     256     256     256 rw---   [ anon ]
+000036ba04800000     256     256     256 rw---   [ anon ]
+000036e39c900000     256     256     256 rw---   [ anon ]
+0000372026600000     256     256     256 rw---   [ anon ]
+0000375923040000     256     256     256 rw---   [ anon ]
+00003768f8980000     256     256     256 rw---   [ anon ]
+000037748f240000     256     256     256 rw---   [ anon ]
+0000377612e00000     256     256     256 rw---   [ anon ]
+0000378c3a540000     256     256     256 rw---   [ anon ]
+0000379b4c700000     256     256     256 rw---   [ anon ]
+000037a292c00000     256     256     256 rw---   [ anon ]
+000037eb2e5c0000     256     256     256 rw---   [ anon ]
+0000381147b40000     256     256     256 rw---   [ anon ]
+00003830ca580000     256     256     256 rw---   [ anon ]
+00003835c4bc0000     256     256     256 rw---   [ anon ]
+000038363b540000     256     256     256 rw---   [ anon ]
+0000384ba5ec0000     256     256     256 rw---   [ anon ]
+000038508c5c0000     256       0       0 -----   [ anon ]
+0000385ed5200000     256     256     256 rw---   [ anon ]
+00003867ea400000     256     256     256 rw---   [ anon ]
+0000387f89200000     256     256     256 rw---   [ anon ]
+000038872b100000     256     256     256 rw---   [ anon ]
+000038873cc80000     256     256     256 rw---   [ anon ]
+000038939ae00000     256     256     256 rw---   [ anon ]
+000038ac31d80000     256     256     256 rw---   [ anon ]
+000038cc02c80000     256     256     256 rw---   [ anon ]
+000038db65340000     256     256     256 rw---   [ anon ]
+000039220a780000     256     256     256 rw---   [ anon ]
+0000393e0b6c0000     256       8       8 rw---   [ anon ]
+000039723c880000     256     256     256 rw---   [ anon ]
+000039734aa80000     256     256     256 rw---   [ anon ]
+0000398193e00000     256     256     256 rw---   [ anon ]
+00003989bca40000     256     256     256 rw---   [ anon ]
+000039c509840000     256     256     256 rw---   [ anon ]
+000039fe34980000     256     256     256 rw---   [ anon ]
+00003a0443b80000     256     256     256 rw---   [ anon ]
+00003a168fe40000     256     256     256 rw---   [ anon ]
+00003a1d383c0000     256     256     256 rw---   [ anon ]
+00003a1fb9a80000     256     256     256 rw---   [ anon ]
+00003a340f080000     256     256     256 rw---   [ anon ]
+00003a4ae22c0000     256     256     256 rw---   [ anon ]
+00003a55d66c0000     256     256     256 rw---   [ anon ]
+00003a8039b80000     256     256     256 rw---   [ anon ]
+00003ab5bbe80000    5656    5656    5656 rw---   [ anon ]
+00003ae047540000     256     256     256 rw---   [ anon ]
+00003b31ddcc0000     256     256     256 rw---   [ anon ]
+00003b3eec500000     256     256     256 rw---   [ anon ]
+00003b48255c0000     536     536     536 rw---   [ anon ]
+00003b4cf5180000     256     256     256 rw---   [ anon ]
+00003b571fb40000     256     256     256 rw---   [ anon ]
+00003bc731480000     256     256     256 rw---   [ anon ]
+00003bcd018c0000     256     256     256 rw---   [ anon ]
+00003c09cb880000     256     256     256 rw---   [ anon ]
+00003c8799c80000     256     256     256 rw---   [ anon ]
+00003ca571300000     256     256     256 rw---   [ anon ]
+00003cfb2e8c0000     256     256     256 rw---   [ anon ]
+00003d0724b80000     256     256     256 rw---   [ anon ]
+00003d1d43b40000     256     256     256 rw---   [ anon ]
+00003d2f9a940000     256     256     256 rw---   [ anon ]
+00003d60bfc80000     256     256     256 rw---   [ anon ]
+00003d8695100000     256     256     256 rw---   [ anon ]
+00003db546080000     256     256     256 rw---   [ anon ]
+00003dcc84bc0000     256     256     256 rw---   [ anon ]
+00003dcd320c0000     256     256     256 rw---   [ anon ]
+00003dda0c640000     256     256     256 rw---   [ anon ]
+00003dedaa880000     256     256     256 rw---   [ anon ]
+00003e25a9ec0000     256     256     256 rw---   [ anon ]
+00003e35004c0000     256     256     256 rw---   [ anon ]
+00003e5e58000000     256     256     256 rw---   [ anon ]
+00003e7c6d140000     256     256     256 rw---   [ anon ]
+00003e81d3ec0000     256     256     256 rw---   [ anon ]
+00003e8afc5c0000     256     256     256 rw---   [ anon ]
+00003e9cebb00000     256     256     256 rw---   [ anon ]
+00003ea0992c0000     256     256     256 rw---   [ anon ]
+00003eb2f0b80000     588     588     588 rw---   [ anon ]
+00003ebfd1f80000     256     256     256 rw---   [ anon ]
+00003ee879c40000     256     256     256 rw---   [ anon ]
+00003f0b14400000     256     256     256 rw---   [ anon ]
+00003f342fb80000     256     256     256 rw---   [ anon ]
+00003f4067cc0000    9996    9996    9996 rw---   [ anon ]
+00003f4735400000     256     256     256 rw---   [ anon ]
+00003f4a83700000     256     256     256 rw---   [ anon ]
+00003f5f39a00000     256     256     256 rw---   [ anon ]
+00003fa952a00000     256     256     256 rw---   [ anon ]
+00003fb795380000     256     256     256 rw---   [ anon ]
+00003fbe049c0000     256     256     256 rw---   [ anon ]
+00003fcb51dc0000     256     256     256 rw---   [ anon ]
+00003fd2aef00000     256     256     256 rw---   [ anon ]
+00003fd6a9240000     256     256     256 rw---   [ anon ]
+00003fee81040000     256     256     256 rw---   [ anon ]
+00003ff8e0000000     256     256     256 rw---   [ anon ]
+00007804a0000000     132      44      44 rw---   [ anon ]
+00007804a0021000   65404       0       0 -----   [ anon ]
+00007804a7c00000 2097152       0       0 -----   [ anon ]
+0000780527c00000     128      24      24 rw---   [ anon ]
+0000780527c20000 8388480       0       0 -----   [ anon ]
+0000780727e00000 2097152       0       0 -----   [ anon ]
+00007807a7e00000    4096    2048    2048 rw---   [ anon ]
+00007807a8200000 8384512       0       0 -----   [ anon ]
+00007809a8000000     132      60      60 rw---   [ anon ]
+00007809a8021000   65404       0       0 -----   [ anon ]
+00007809b0000000     132      44      44 rw---   [ anon ]
+00007809b0021000   65404       0       0 -----   [ anon ]
+00007809b4000000     132      44      44 rw---   [ anon ]
+00007809b4021000   65404       0       0 -----   [ anon ]
+00007809bc000000    3452    3452    3452 rw---   [ anon ]
+00007809bc35f000   62084       0       0 -----   [ anon ]
+00007809c0000000    3236    3236    3236 rw---   [ anon ]
+00007809c0329000   62300       0       0 -----   [ anon ]
+00007809c4000000   31900   14004   14004 rw---   [ anon ]
+00007809c5f27000   33636       0       0 -----   [ anon ]
+00007809cc000000    2280    2228    2228 rw---   [ anon ]
+00007809cc23a000   63256       0       0 -----   [ anon ]
+00007809d1c00000     392     384       0 r-x-- spdlog.node
+00007809d1c62000    2044       0       0 ----- spdlog.node
+00007809d1e61000      12      12      12 r---- spdlog.node
+00007809d1e64000       4       4       4 rw--- spdlog.node
+00007809d2000000       4       0       0 -----   [ anon ]
+00007809d2001000    8192       8       8 rw---   [ anon ]
+00007809d2a00000       8       8       0 r-x-- watchdog.node
+00007809d2a02000    2044       0       0 ----- watchdog.node
+00007809d2c01000       4       4       4 r---- watchdog.node
+00007809d2c02000       4       4       4 rw--- watchdog.node
+00007809d2e00000       4       0       0 -----   [ anon ]
+00007809d2e01000    8192      20      20 rw---   [ anon ]
+00007809d3800000       4       0       0 -----   [ anon ]
+00007809d3801000    8192      20      20 rw---   [ anon ]
+00007809d4200000       4       0       0 -----   [ anon ]
+00007809d4201000    8192      20      20 rw---   [ anon ]
+00007809d4c00000       4       0       0 -----   [ anon ]
+00007809d4c01000    8192      20      20 rw---   [ anon ]
+00007809d5600000       8       8       8 rw---   [ anon ]
+00007809d5602000       4       0       0 -----   [ anon ]
+00007809d5603000     240     240     240 rwx--   [ anon ]
+00007809d563f000       4       0       0 -----   [ anon ]
+00007809d5640000       8       8       8 rw---   [ anon ]
+00007809d5642000       4       0       0 -----   [ anon ]
+00007809d5643000     240     240     240 rwx--   [ anon ]
+00007809d567f000       4       0       0 -----   [ anon ]
+00007809d5680000       8       8       8 rw---   [ anon ]
+00007809d5682000       4       0       0 -----   [ anon ]
+00007809d5683000     240     240     240 rwx--   [ anon ]
+00007809d56bf000       4       0       0 -----   [ anon ]
+00007809d56c0000       8       8       8 rw---   [ anon ]
+00007809d56c2000       4       0       0 -----   [ anon ]
+00007809d56c3000     240     240     240 rwx--   [ anon ]
+00007809d56ff000       4       0       0 -----   [ anon ]
+00007809d5700000       8       8       8 rw---   [ anon ]
+00007809d5702000       4       0       0 -----   [ anon ]
+00007809d5703000     240     240     240 rwx--   [ anon ]
+00007809d573f000       4       0       0 -----   [ anon ]
+00007809d5740000       8       8       8 rw---   [ anon ]
+00007809d5742000       4       0       0 -----   [ anon ]
+00007809d5743000     240     240     240 rwx--   [ anon ]
+00007809d577f000       4       0       0 -----   [ anon ]
+00007809d5780000       8       8       8 rw---   [ anon ]
+00007809d5782000       4       0       0 -----   [ anon ]
+00007809d5783000     240     240     240 rwx--   [ anon ]
+00007809d57bf000       4       0       0 -----   [ anon ]
+00007809d57c0000       8       8       8 rw---   [ anon ]
+00007809d57c2000       4       0       0 -----   [ anon ]
+00007809d57c3000     240     240     240 rwx--   [ anon ]
+00007809d57ff000       4       0       0 -----   [ anon ]
+00007809d5800000       8       8       8 rw---   [ anon ]
+00007809d5802000       4       0       0 -----   [ anon ]
+00007809d5803000     136     136     136 rwx--   [ anon ]
+00007809d5825000     108       0       0 -----   [ anon ]
+00007809d5840000       8       8       8 rw---   [ anon ]
+00007809d5842000       4       0       0 -----   [ anon ]
+00007809d5843000     240     240     240 rwx--   [ anon ]
+00007809d587f000       4       0       0 -----   [ anon ]
+00007809d5880000       8       8       8 rw---   [ anon ]
+00007809d5882000       4       0       0 -----   [ anon ]
+00007809d5883000     240     240     240 rwx--   [ anon ]
+00007809d58bf000       4       0       0 -----   [ anon ]
+00007809d58c0000       8       8       8 rw---   [ anon ]
+00007809d58c2000       4       0       0 -----   [ anon ]
+00007809d58c3000     240     240     240 rwx--   [ anon ]
+00007809d58ff000       4       0       0 -----   [ anon ]
+00007809d5900000       8       8       8 rw---   [ anon ]
+00007809d5902000       4       0       0 -----   [ anon ]
+00007809d5903000     240     240     240 rwx--   [ anon ]
+00007809d593f000       4       0       0 -----   [ anon ]
+00007809d5940000       8       8       8 rw---   [ anon ]
+00007809d5942000       4       0       0 -----   [ anon ]
+00007809d5943000     240     240     240 rwx--   [ anon ]
+00007809d597f000       4       0       0 -----   [ anon ]
+00007809d5980000       8       8       8 rw---   [ anon ]
+00007809d5982000       4       0       0 -----   [ anon ]
+00007809d5983000     240     240     240 rwx--   [ anon ]
+00007809d59bf000       4       0       0 -----   [ anon ]
+00007809d59c0000       8       8       8 rw---   [ anon ]
+00007809d59c2000       4       0       0 -----   [ anon ]
+00007809d59c3000     240     240     240 rwx--   [ anon ]
+00007809d59ff000       4       0       0 -----   [ anon ]
+00007809d5a00000       8       8       8 rw---   [ anon ]
+00007809d5a02000       4       0       0 -----   [ anon ]
+00007809d5a03000     240     240     240 rwx--   [ anon ]
+00007809d5a3f000       4       0       0 -----   [ anon ]
+00007809d5a40000       8       8       8 rw---   [ anon ]
+00007809d5a42000       4       0       0 -----   [ anon ]
+00007809d5a43000     240     240     240 rwx--   [ anon ]
+00007809d5a7f000       4       0       0 -----   [ anon ]
+00007809d5a80000       8       8       8 rw---   [ anon ]
+00007809d5a82000       4       0       0 -----   [ anon ]
+00007809d5a83000     240     240     240 rwx--   [ anon ]
+00007809d5abf000       4       0       0 -----   [ anon ]
+00007809d5ac0000       8       8       8 rw---   [ anon ]
+00007809d5ac2000       4       0       0 -----   [ anon ]
+00007809d5ac3000     240     236     236 rwx--   [ anon ]
+00007809d5aff000       4       0       0 -----   [ anon ]
+00007809d5b00000       8       8       8 rw---   [ anon ]
+00007809d5b02000       4       0       0 -----   [ anon ]
+00007809d5b03000     240      72      72 rwx--   [ anon ]
+00007809d5b3f000  517124       0       0 -----   [ anon ]
+00007809f5440000    1604    1264       0 r-x-- node
+00007809f55d1000     188       0       0 -----   [ anon ]
+00007809f5800000       4       0       0 -----   [ anon ]
+00007809f5801000    8192      28      28 rw---   [ anon ]
+00007809f6200000       4       0       0 -----   [ anon ]
+00007809f6201000    8192      28      28 rw---   [ anon ]
+00007809f6c00000       4       0       0 -----   [ anon ]
+00007809f6c01000    8192      24      24 rw---   [ anon ]
+00007809f7600000       4       0       0 -----   [ anon ]
+00007809f7601000    8192      24      24 rw---   [ anon ]
+00007809f8000000     132       8       8 rw---   [ anon ]
+00007809f8021000   65404       0       0 -----   [ anon ]
+00007809fc3b3000    1728    1728    1728 rw---   [ anon ]
+00007809fc600000       4       0       0 -----   [ anon ]
+00007809fc601000    8192      16      16 rw---   [ anon ]
+00007809fce0a000      16      16       0 r---- libresolv-2.31.so
+00007809fce0e000      64      64       0 r-x-- libresolv-2.31.so
+00007809fce1e000      16      16       0 r---- libresolv-2.31.so
+00007809fce22000       4       4       4 r---- libresolv-2.31.so
+00007809fce23000       4       4       4 rw--- libresolv-2.31.so
+00007809fce24000       8       0       0 rw---   [ anon ]
+00007809fce26000       4       4       0 r---- libnss_dns-2.31.so
+00007809fce27000      16      16       0 r-x-- libnss_dns-2.31.so
+00007809fce2b000       4       0       0 r---- libnss_dns-2.31.so
+00007809fce2c000       4       4       4 r---- libnss_dns-2.31.so
+00007809fce2d000       4       4       4 rw--- libnss_dns-2.31.so
+00007809fce2e000      12      12       0 r---- libnss_files-2.31.so
+00007809fce31000      28      28       0 r-x-- libnss_files-2.31.so
+00007809fce38000       8       8       0 r---- libnss_files-2.31.so
+00007809fce3a000       4       4       4 r---- libnss_files-2.31.so
+00007809fce3b000       4       4       4 rw--- libnss_files-2.31.so
+00007809fce3c000      24       0       0 rw---   [ anon ]
+00007809fce4c000      16       0       0 rw---   [ anon ]
+00007809fce50000     496       0       0 -----   [ anon ]
+00007809fcecc000      20      20      20 rw---   [ anon ]
+00007809fced1000     136     136       0 r---- libc-2.31.so
+00007809fcef3000    1504    1268       0 r-x-- libc-2.31.so
+00007809fd06b000     312     148       0 r---- libc-2.31.so
+00007809fd0b9000      16      16      16 r---- libc-2.31.so
+00007809fd0bd000       8       8       8 rw--- libc-2.31.so
+00007809fd0bf000      16      16      16 rw---   [ anon ]
+00007809fd0c3000      24      24       0 r---- libpthread-2.31.so
+00007809fd0c9000      68      68       0 r-x-- libpthread-2.31.so
+00007809fd0da000      24      24       0 r---- libpthread-2.31.so
+00007809fd0e0000       4       4       4 r---- libpthread-2.31.so
+00007809fd0e1000       4       4       4 rw--- libpthread-2.31.so
+00007809fd0e2000      16       4       4 rw---   [ anon ]
+00007809fd0e6000      12      12       0 r---- libgcc_s.so.1
+00007809fd0e9000      72      64       0 r-x-- libgcc_s.so.1
+00007809fd0fb000      16      16       0 r---- libgcc_s.so.1
+00007809fd0ff000       4       4       4 r---- libgcc_s.so.1
+00007809fd100000       4       4       4 rw--- libgcc_s.so.1
+00007809fd101000      52      52       0 r---- libm-2.31.so
+00007809fd10e000     668     308       0 r-x-- libm-2.31.so
+00007809fd1b5000     612      60       0 r---- libm-2.31.so
+00007809fd24e000       4       4       4 r---- libm-2.31.so
+00007809fd24f000       4       4       4 rw--- libm-2.31.so
+00007809fd250000     600     600       0 r---- libstdc++.so.6.0.28
+00007809fd2e6000     964     744       0 r-x-- libstdc++.so.6.0.28
+00007809fd3d7000     292      64       0 r---- libstdc++.so.6.0.28
+00007809fd420000       4       0       0 ----- libstdc++.so.6.0.28
+00007809fd421000      44      44      44 r---- libstdc++.so.6.0.28
+00007809fd42c000      12      12      12 rw--- libstdc++.so.6.0.28
+00007809fd42f000      12      12      12 rw---   [ anon ]
+00007809fd432000       4       4       0 r---- libdl-2.31.so
+00007809fd433000       8       8       0 r-x-- libdl-2.31.so
+00007809fd435000       4       0       0 r---- libdl-2.31.so
+00007809fd436000       4       4       4 r---- libdl-2.31.so
+00007809fd437000       4       4       4 rw--- libdl-2.31.so
+00007809fd438000       8       8       8 rw---   [ anon ]
+00007809fd43b000       4       0       0 -----   [ anon ]
+00007809fd43c000      32       8       8 rw---   [ anon ]
+00007809fd444000       4       4       0 r---- ld-2.31.so
+00007809fd445000     140     140       0 r-x-- ld-2.31.so
+00007809fd468000      32      32       0 r---- ld-2.31.so
+00007809fd471000       4       4       4 r---- ld-2.31.so
+00007809fd472000       4       4       4 rw--- ld-2.31.so
+00007809fd473000       4       4       4 rw---   [ anon ]
+00007ffe084da000    1000    1000    1000 rw---   [ stack ]
+00007ffe085eb000      16       0       0 r----   [ anon ]
+00007ffe085ef000       8       4       0 r-x--   [ anon ]
+ffffffffff600000       4       0       0 --x--   [ anon ]
+---------------- ------- ------- ------- 
+total kB         22498936  313340  264264
+
+I see address, Kbytes, RSS, Dirty Mode, and Mapping. The address space is made up of these entities. 
+
+Question 8:
+
+@Avancir ➜ /workspaces/csc425.coding.8 (main) $ ./memory-user -&
+[1] 31758
+Running with 0 bytes
+@Avancir ➜ /workspaces/csc425.coding.8 (main) $ pidof memory-user
+31758
+@Avancir ➜ /workspaces/csc425.coding.8 (main) $ pmap -x 31758
+31758:   ./memory-user -
+Address           Kbytes     RSS   Dirty Mode  Mapping
+00005fcc409e6000       4       4       0 r---- memory-user
+00005fcc409e7000       4       4       0 r-x-- memory-user
+00005fcc409e8000       4       4       0 r---- memory-user
+00005fcc409e9000       4       4       4 r---- memory-user
+00005fcc409ea000       4       4       4 rw--- memory-user
+00005fcc41ba6000     132       4       4 rw---   [ anon ]
+000078da715a7000     136     136       0 r---- libc-2.31.so
+000078da715c9000    1504     860       0 r-x-- libc-2.31.so
+000078da71741000     312     124       0 r---- libc-2.31.so
+000078da7178f000      16      16      16 r---- libc-2.31.so
+000078da71793000       8       8       8 rw--- libc-2.31.so
+000078da71795000      24      20      20 rw---   [ anon ]
+000078da717a5000       4       4       0 r---- ld-2.31.so
+000078da717a6000     140     140       0 r-x-- ld-2.31.so
+000078da717c9000      32      32       0 r---- ld-2.31.so
+000078da717d2000       4       4       4 r---- ld-2.31.so
+000078da717d3000       4       4       4 rw--- ld-2.31.so
+000078da717d4000       4       4       4 rw---   [ anon ]
+00007fffbb0ea000     136      16      16 rw---   [ stack ]
+00007fffbb111000      16       0       0 r----   [ anon ]
+00007fffbb115000       8       4       0 r-x--   [ anon ]
+ffffffffff600000       4       0       0 --x--   [ anon ]
+---------------- ------- ------- ------- 
+total kB            2504    1396      84
+
+I can see how much memory is being taken by the process. Also I can see its address. 
+The memory that the process is taking matched my expectation. 
